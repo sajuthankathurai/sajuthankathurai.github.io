@@ -1,26 +1,136 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
-    <title>Add React in One Minute</title>
+    <title>Product Snapshot</title>
+    <style>
+      body{
+        
+        font-family: sans-serif !important;
+      }
+      .header{
+        display: flex;
+        align-items: center;
+        height: 2.5rem;
+        background: black;
+      }
+      .leftContent{
+        padding-left: 1.5rem;
+        margin-right: auto;
+      }
+      .rightContent{
+        padding-right: 1.5rem;
+      }
+      .leftContent > a, .rightContent > a{
+        color: white;
+        text-decoration: none;
+      }
+      .product-container{
+        display: flex;    
+        border: 0.05rem solid lightgrey;
+        margin: 1rem;    
+        flex-wrap: wrap;
+      }
+      .highlight{
+        font-weight: bold;
+      }
+      .main-container{
+        display: flex;
+    flex-wrap: wrap;
+    min-width: 300px;
+    justify-content: space-evenly;
+      }
+     
+    </style>
   </head>
   <body>
 
-    <h2>Add React in One Minute</h2>
-    <p>This page demonstrates using React with no build tooling.</p>
-    <p>React is loaded as a script tag.</p>
+    <div class="header">
+      <div class="leftContent">
+        <a href="#">LOGO</a>
+      </div>
+      <div class="rightContent">
+        <a href="#">About</a>
+        <a href="#">Contact us</a>        
+      </div>
+    </div>
 
-    <!-- We will put our React component inside this div. -->
-    <div id="like_button_container"></div>
+    
+    <div id="react_container"></div>
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>    
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+      
+    <script type="text/babel">
+    "use strict";
 
-    <!-- Load our React component. -->
-    <script src="like_button.js"></script>
+    
+    class ProductList extends React.Component{
+    constructor(props){
+        console.log(props);
+        super(props);
+    }
 
+    render(){
+        return(
+          
+            <div className="main-container">
+            {Object.keys(this.props.details).map((val,idx) => {
+                //return <p key={this.props.details[val].id}> {this.props.details[val].name}</p>
+
+                return (
+                <div className="product-container">
+                  <div>
+                    <p>Product: <span className="highlight">{this.props.details[val].name}</span></p>
+                    <p>Available Quantity: {this.props.details[val].available}</p>
+                    <p>Contact person: {this.props.details[val].contact}</p>
+                    </div>
+                  
+                  </div>
+
+                  
+
+                );
+
+            })}
+            </div>
+        )
+    }
+
+}
+
+class App extends React.Component {
+  state = { products : [
+      {id: '1001', name:'Onion', available:"32 Kg", contact:"xyz"},
+      {id: '1002', name:'Garlic', available:"12 Kg", contact:"abc"},
+      {id: '1003', name:'Potato', available:"40 Kg", contact:"xyz"},
+      {id: '1004', name:'Coconut', available:"25 Nos", contact:"xyz"},
+      {id: '1005', name:'Rice', available:"50 Kg", contact:"xyz"},      
+    ] };
+
+  render() {
+    /* if (this.state.liked) {
+      return "You liked this.";
+    } */
+
+    //return <button onClick={() => this.setState({ liked: true })}>Like</button>;
+    return (
+    <div>
+      <h1>List of available products</h1>
+      <ProductList details={this.state.products}></ProductList>
+      </div>  
+    );
+  }
+}
+
+const domContainer = document.querySelector("#react_container");
+ReactDOM.render(<App />, domContainer);
+
+    </script>
+    
   </body>
 </html>
