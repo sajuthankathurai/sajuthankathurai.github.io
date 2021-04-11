@@ -83,7 +83,7 @@
                 //return <p key={this.props.details[val].id}> {this.props.details[val].name}</p>
 
                 return (
-                <div className="product-container">
+                <div className="product-container" key={this.props.details[val].id}>
                   <div>
                     <p>Product: <span className="highlight">{this.props.details[val].name}</span></p>
                     <p>Available Quantity: {this.props.details[val].available}</p>
