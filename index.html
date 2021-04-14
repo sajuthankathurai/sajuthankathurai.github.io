@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
-    <title>Product Snapshot</title>
+    <title>உழவனும் மக்களும்</title>
     <style>
       body{
         
@@ -15,16 +15,21 @@
       }
       .header{
         display: flex;
-        align-items: center;
-        height: 2.5rem;
-        background: black;
+    color: white;
+    align-items: center;
+    height: 4.5rem;
+    background: black;
+    justify-content: space-between;
+    margin-bottom: 1rem;
       }
-      .leftContent{
-        padding-left: 1.5rem;
-        margin-right: auto;
-      }
+     
       .rightContent{
         padding-right: 1.5rem;
+        display: flex;
+    align-items: center;
+      }
+      .rightContent > a{
+        padding-right: 1rem;
       }
       .leftContent > a, .rightContent > a{
         color: white;
@@ -45,20 +50,34 @@
     min-width: 300px;
     justify-content: space-evenly;
       }
+
+      summary:focus {
+        outline: none;
+      }
+
+      details[open] {
+        border: 1px solid #aaa;
+}
+
+details[open] > p {
+    padding: 0.5rem;
+    margin: 0rem;
+}
+
+      .header-img{
+        background-color: white;
+    width: 2rem;
+      }
+
+      .header-right-padding{
+        padding-right: 1rem;
+      }
      
     </style>
   </head>
   <body>
 
-    <div class="header">
-      <div class="leftContent">
-        <a href="#">LOGO</a>
-      </div>
-      <div class="rightContent">
-        <a href="#">About</a>
-        <a href="#">Contact us</a>        
-      </div>
-    </div>
+    
 
     
     <div id="react_container"></div>
@@ -71,6 +90,34 @@
       
     <script type="text/babel">
     "use strict";
+
+    class HeaderComponent extends React.Component {
+      render(){
+        return(
+          <div className="header">
+            <div className="leftContent">
+              <img src="./images/plowman.jpg" alt="Plowman"/>
+            </div>
+            <div className="centerContent">
+              <h1>உழவனும் மக்களும்</h1>
+            </div>
+            <div className="rightContent">
+              <p className="header-right-padding">
+                
+                <a href="https://www.facebook.com/uzhavanumMakkalum"><img className="header-img" src="./images/facebook.svg" alt="Facebook"/></a>
+                </p>
+              <p className="header-right-padding">
+                <a href="mailto:uzhavanum.makkalum@gmail.com"><img className="header-img" src="./images/email.svg" alt="Email"/></a>                
+                </p>
+              <p className="header-right-padding">
+                <a href="tel:8904762686"><img className="header-img" src="./images/phone.svg" alt="Phone"/></a>
+
+                </p>              
+           </div>
+        </div>
+        )
+      }
+    }
 
     
     class ProductList extends React.Component{
@@ -117,7 +164,13 @@ class App extends React.Component {
    
     return (
     <div>
-      <h1>List of available products</h1>
+      <HeaderComponent/>      
+      <details>
+  <summary>About உழவனும் மக்களும் - Uzhavanum Makkalum</summary>
+  <p>உழவனும் மக்களும் - Uzhavanum Makkalum is an effort to get the rural farmers product to reach people. Starting with our farm products at the present. Plan is to bring in all the local farmers based on demand.  </p>
+  <p>Delivery places - Karur Town to Velayuthampalayam - All Places.</p>
+  <p>Timely delivery - Items directly from farmers - Market price</p>
+</details>
       <ProductList details={this.state.products}></ProductList>
       </div>  
     );
