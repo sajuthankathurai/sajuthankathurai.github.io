@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <title>உழவனும் மக்களும்</title>
+    <link rel="stylesheet" href="./styles.css"/>
+  </head>
+  <body> 
+    <div id="react_container"></div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>    
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+      
+    <script type="text/babel">
+    "use strict";
+
+    class HeaderComponent extends React.Component {
+      render(){
+        return(
+          <div className="header">
+            <div className="leftContent">
+              <img src="./images/plowman.jpg" alt="Plowman"/>
+            </div>
+            <div className="centerContent">
+              <h1>உழவனும் மக்களும்</h1>
+            </div>
+            <div className="rightContent">
+              <p className="header-right-padding">
+                
+                <a href="https://www.facebook.com/uzhavanumMakkalum"><img className="header-img" src="./images/facebook.svg" alt="Facebook"/></a>
+                </p>
+              <p className="header-right-padding">
+                <a href="mailto:uzhavanum.makkalum@gmail.com"><img className="header-img" src="./images/email.svg" alt="Email"/></a>                
+                </p>
+              <p className="header-right-padding">
+                <a href="tel:8904762686"><img className="header-img" src="./images/phone.svg" alt="Phone"/></a>
+
+                </p>              
+           </div>
+        </div>
+        )
+      }
+    }
+
+    
+    class ProductList extends React.Component{
+    constructor(props){
+        console.log(props);
+        super(props);
+    }
+
+    render(){
+        return(
+          
+            <div className="main-container">
+            {Object.keys(this.props.details).map((val,idx) => {
+                
+                return (
+                <div className="product-container" key={this.props.details[val].id}>
+                  <div>
+                    <p>Product: <span className="highlight">{this.props.details[val].name}</span></p>
+                    <p>Available Quantity: {this.props.details[val].available}</p>
+                    <p>Contact person: {this.props.details[val].contact}</p>
+                    </div>
+                  
+                  </div>                  
+
+                );
+
+            })}
+            </div>
+        )
+    }
+
+}
+
+class App extends React.Component {
+  state = { products : [
+      {id: '1001', name:'Onion', available:"32 Kg", contact:"xyz"},
+      {id: '1002', name:'Garlic', available:"12 Kg", contact:"abc"},
+      {id: '1003', name:'Potato', available:"40 Kg", contact:"xyz"},
+      {id: '1004', name:'Coconut', available:"25 Nos", contact:"xyz"},
+      {id: '1005', name:'Rice', available:"50 Kg", contact:"xyz"},      
+    ] };
+
+  render() {
+   
+    return (
+    <div>
+      <HeaderComponent/>      
+      <details>
+  <summary>About உழவனும் மக்களும் - Uzhavanum Makkalum</summary>
+  <p>உழவனும் மக்களும் - Uzhavanum Makkalum is an effort to get the rural farmers product to reach people. Starting with our farm products at the present. Plan is to bring in all the local farmers based on demand.  </p>
+  <p>Delivery places - Karur Town to Velayuthampalayam - All Places.</p>
+  <p>Timely delivery - Items directly from farmers - Market price</p>
+</details>
+      <ProductList details={this.state.products}></ProductList>
+      </div>  
+    );
+  }
+}
+
+const domContainer = document.querySelector("#react_container");
+ReactDOM.render(<App />, domContainer);
+
+    </script>
+    
+  </body>
+</html>
