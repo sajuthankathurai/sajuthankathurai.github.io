@@ -5,16 +5,35 @@
     <title>Vue 3 Quickstart</title>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.1/vue.global.js"></script>
+    <script>
+        var digitalData = {
+            "affiliate": {
+        "affname": "McAfee",
+        "affUrlCode": "m0",
+        "affcode": "mcafee_0",
+        "channel": "Direct",
+        "logo": "",
+        "affid": "0"
+    }
+        }
+    </script>
 </head>
 <body>
 
-<div id="app">
+<div data-instance="above-the-fold">
+    <p>{{digitalData.affiliate.affid}}</p>
 </div>
 
 <script type="module">
     import app from './app.js'
     const {createApp} = Vue;
-    createApp(app).mount('#app');
+    createApp({
+        data(){
+            return{
+                digitalData :window.digitalData
+            }
+        }
+    }).mount('[data-instance="above-the-fold"]');
 </script>
 
 </body>
