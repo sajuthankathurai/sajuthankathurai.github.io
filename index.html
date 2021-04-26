@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Vue 3 Quickstart</title>    
+    <title>McAfee Sample Site</title>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.1/vue.global.js"></script>
     <script>
         var digitalData = {
             "affiliate": {
@@ -17,14 +16,18 @@
     }
         }
     </script>
+    
+    
 </head>
 <body>
 
 <div data-instance="above-the-fold">
     <p>{{digitalData.affiliate.affid}}</p>
 </div>
+<script defer src="./vendor-bundle.js"></script>
+<script defer src="./bundle-personalized.js"></script>
 
-<script type="module">
+<!-- <script type="module">
     import app from './app.js'
     const {createApp} = Vue;
     createApp({
@@ -34,7 +37,7 @@
             }
         }
     }).mount('[data-instance="above-the-fold"]');
-</script>
+</script> -->
 
 </body>
 </html>
