@@ -44,7 +44,7 @@ async function asyncGETAll(urls) {
     });
 }
 
-console.timeEnd("Dynamic data fetch call:");
+console.time("Dynamic data fetch call:");
 asyncGETAll(["/affiliate.json", "/subscription.json"])
   .then((responseObj) => {
     console.timeEnd("Dynamic data fetch call:");

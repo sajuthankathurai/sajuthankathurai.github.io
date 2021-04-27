@@ -1,4 +1,4 @@
-var digitalData = {
+window.digitalData = {
   cacheableQSParams: [],
   cacheableDependentQSParams: [],
   utagEvent: {
