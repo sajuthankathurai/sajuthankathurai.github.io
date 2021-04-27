@@ -27,17 +27,27 @@
 <script defer src="./vendor-bundle.js"></script>
 <script defer src="./bundle-personalized.js"></script>
 
-<!-- <script type="module">
-    import app from './app.js'
-    const {createApp} = Vue;
-    createApp({
-        data(){
-            return{
-                digitalData :window.digitalData
-            }
-        }
-    }).mount('[data-instance="above-the-fold"]');
-</script> -->
+<div class="result">
+    <span class="title">Loading...</span>
+    <div class="content">Loading...</div>
+</div>
+<script type="text/javascript">
+  /*   if (window.Worker) {
+        var fetchWorker = new Worker('fetchWorker.js');
+        
+        fetchWorker.postMessage([
+    "/consumer/services/core/cacheable/static.json/affiliateV2",
+    "/consumer/services/core/dynamic.json/geoData/deviceV2/orderV2/userProfileV2/subscriptionV2"
+]);
+
+        fetchWorker.onmessage = function(e) {    
+        console.log('Message received from worker', e.data);
+  }
+    } */
+    
+    
+    
+</script>
 
 </body>
 </html>
