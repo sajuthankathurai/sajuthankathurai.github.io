@@ -45,7 +45,7 @@ async function asyncGETAll(urls) {
 }
 
 console.time("Dynamic data fetch call:");
-asyncGETAll(["/affiliate.json", "/subscription.json", "/offers.json"])
+asyncGETAll(["/affiliate.json", "/subscription.json"])
   .then((responseObj) => {
     console.timeEnd("Dynamic data fetch call:");
     window.digitalData = Object.assign(window.digitalData, responseObj);
