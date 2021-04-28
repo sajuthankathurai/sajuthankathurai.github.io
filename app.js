@@ -18,6 +18,52 @@ function customizedFetch(url, optionalHeaders) {
   });
 }
 
+function evalRules(off) {
+  off.evalResult = true;
+  // the below format is required as eval will fail if the JSONObject has formats like below
+  //digitalData.offers.o1.rewards="[{"DiscountTypeValue":"None"}]"
+  //digitalData.offers.o1.rewardTotal="{"DiscountTypeValue":"None"}"
+  //So after doing the transformation, formatted will look like below.
+  //digitalData.offers.o1.rewards=[{"DiscountTypeValue":"None"}]
+  //digitalData.offers.o1.rewardTotal={"DiscountTypeValue":"None"}
+  const formattedAssignment = off.assignment
+    .replaceAll('"[', "[")
+    .replaceAll(']"', "]")
+    .replaceAll('"{', "{")
+    .replaceAll('}"', "}");
+  eval(formattedAssignment);
+}
+
+function offerEvalRules() {
+  console.time("Eval offersegment rules");
+  return new Promise((resolve) => {
+    const offSegRules =
+      window.digitalData?.offerSegmentRules?.rules?.length || undefined;
+    if (offSegRules) {
+      for (const off of this.digitalData.offerSegmentRules.rules) {
+        try {
+          const exp = eval(off.expression);
+          if (exp) {
+            evalRules(off);
+            resolve(true);
+            break;
+          }
+        } catch (err) {
+          evalRules(
+            window.digitalData.offerSegmentRules.rules[
+              window.digitalData.offerSegmentRules.rules.length - 1
+            ]
+          );
+          resolve(false);
+        }
+      }
+    } else {
+      console.log("Offer Eval failed");
+      resolve(false);
+    }
+  });
+}
+
 async function asyncGETAll(urls) {
   return await Promise.all(urls.map((url) => customizedFetch(url, {})))
     .then(function (responses) {
@@ -51,6 +97,8 @@ asyncGETAll(["/affiliate.json", "/subscription.json"])
     window.digitalData = Object.assign(window.digitalData, responseObj);
     //document.dispatchEvent(apiCompletedAndDigitalDataMergedEvent);
     //document.dispatchEvent(fireAnalyticsEvent);
+    window.digitalData.offers = {};
+    offerEvalRules();
   })
   .catch((err) => {
     console.log(err);
