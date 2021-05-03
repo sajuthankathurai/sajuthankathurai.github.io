@@ -48,7 +48,7 @@
   95% { transform: translateX(0px); }
 } .main__section--round-border-bottom > .main__section--wrapper { border: 1px solid transparent; border-bottom-right-radius: 0.4rem; border-bottom-left-radius: 0.4rem; } .main__section--color-white { background: rgb(255, 255, 255); } .cmp-radiobutton__container { padding: 1rem; border-radius: 0.425rem; margin-left: auto; margin-right: auto; text-align: center; } .cmp-radiobutton__container { width: auto; } .cmp-radiobutton__offer-container { display: flex; justify-content: space-around; margin-bottom: 1.25rem; } .cmp-radiobutton__offer-container { display: block; min-width: auto; } .cmp-radio-a__offer__radio-input, .cmp-radio__offer__radio-input { appearance: none; display: inline-block; position: relative; top: 5px; height: 20px; width: 20px; border: 1px solid rgb(187, 187, 187); border-radius: 50px; cursor: pointer; margin-right: 19px; outline: 0px; background: rgb(255, 255, 255); } .cmp-radio-a__offer__radio-input, .cmp-radio__offer__radio-input { margin-right: 10px; } .cmp-radio-a__offer__radio-input:checked::after, .cmp-radio__offer__radio-input:checked::after { content: ""; width: 10px; height: 10px; background: rgb(102, 102, 102); position: absolute; border-radius: 50%; left: 4px; top: 4px; } .cmp-radiobutton--stack { text-align: inherit; } .cmp-radiobutton--stack .cmp-radiobutton__offer-container { flex-direction: column; } .cmp-radiobutton--stack .cmp-radio-a__offer__container { padding: 1rem; border-radius: 0.25rem; margin-bottom: 0.5rem; position: relative; } .cmp-radiobutton--stack .cmp-radio-a__offer__container { width: auto; } .cmp-radiobutton--stack .cmp-radiobuttonitem { margin-top: 1rem; } .cmp-radiobutton--stack .cmp-radiobuttonitem { margin-top: 1.5rem; } .cmp-radiobutton--stack .cmp-radio-a__offer { display: block; cursor: pointer; } .cmp-radiobutton--stack .cmp-radio-a__offer__items { display: flex; align-items: center; justify-content: space-between; padding: 0px 0.75rem; } .cmp-radiobutton--stack .cmp-radio-a__offer__items { padding: 0px; } .cmp-radiobutton--stack .cmp-radio-a__offer__firstitem { display: flex; flex-direction: row; justify-content: center; line-height: 1.5; align-items: center; } .cmp-radiobutton--stack .cmp-radio-a__offer__firstitem { line-height: 1.2; } .cmp-radiobutton--stack .cmp-radio-a__offer__seconditem { text-align: right; } .cmp-radiobutton--stack .cmp-radio-a__offer__firstitem__message *, .cmp-radiobutton--stack .cmp-radio-a__offer__seconditem * { margin: 0px; } .cmp-radiobutton--stack [data-badge="yes"] { background-color: rgb(230, 231, 232); border: 1px solid rgb(177, 186, 191); box-shadow: rgba(0, 0, 0, 0.25) 0px 0.25rem 0.25rem; } .cmp-radiobutton--stack [data-badge="yes"] .cmp-radio__badge { position: absolute; top: -15px; right: -11px; overflow: visible; font-size: 0.75rem; color: rgb(255, 255, 255); } .cmp-radiobutton--stack [data-badge="yes"] .cmp-radio__badge::after { content: ""; height: 3px; background: rgba(0, 0, 0, 0.2); display: block; position: absolute; bottom: -3px; left: 58px; right: 3px; } .cmp-radiobutton--stack [data-badge="yes"] .cmp-radio__badge a { display: block; padding: 3px 21px; position: relative; background: rgb(230, 38, 38); overflow: visible; margin-left: 63px; text-decoration: none; margin-bottom: -1px; border-radius: 0px 3px 3px 0px; line-height: 18px; } .cmp-radiobutton--stack [data-badge="yes"] .cmp-radio__badge a::after { content: ""; position: absolute; bottom: -10px; right: 2px; border-top: 10px solid rgb(124, 16, 16); border-right: 9px solid transparent; } .cmp-radiobutton--stack [data-badge="yes"] .cmp-radio__badge a::before { content: ""; position: absolute; top: 0px; left: -5px; border-color: rgb(230, 38, 38) transparent; border-style: solid; border-width: 12px 0px 12px 6px; } .font-color-mcafee-red { color: rgb(192, 24, 24); } .font-color-black { color: rgb(0, 0, 0); } .fs-24 { font-size: calc(1.275rem + 0.3vw); }
 </style>
-<link rel="preload" href="./usedThemes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
 <!-- <link rel="preload" href="./theme-consumer-dlp.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="./theme-consumer-dlp.min.css"></noscript> -->
      
@@ -73,12 +73,7 @@ body{margin: 3rem auto;} @media (min-width: 1200px){.main__section--wrapper.rete
           <!-- <link rel="preload" as="style" href="./theme-consumer-dlp.min.css" type="text/css"/> -->
 
         <!--   <script defer src="./visitorapi.min.js"></script>      -->                      
-    
-		<script defer src="./digitalData.js"></script>
-	<script defer src="./offerSegmentRules.js"></script>
-	<script defer src="./vendor-bundle.js"></script>
-	<script defer src="./bundle-personalized.js"></script>
-	<script defer src="./functions_dlp3.js"></script>
+
     </head>
 
 
@@ -9157,7 +9152,12 @@ body{margin: 3rem auto;} @media (min-width: 1200px){.main__section--wrapper.rete
 		
 	<!-- <noscript><link rel="stylesheet" href="./usedThemes.css"></noscript> --> 
 	
-	
+	<link rel="preload" href="./usedThemes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">    
+	<script defer src="./digitalData.js"></script>
+<script defer src="./offerSegmentRules.js"></script>
+<script defer src="./vendor-bundle.js"></script>
+<script defer src="./bundle-personalized.js"></script>
+<script defer src="./functions_dlp3.js"></script>
 	</body>
 	
 
